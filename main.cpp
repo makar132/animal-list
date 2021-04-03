@@ -72,7 +72,7 @@ public:
         Animal::eating = eating;
     }
 
-    void Modify_Animal(string type,string name,string color,int age,bool eat,bool move)
+    void Modify_Animal(string type,string name,string color,int age,bool move,bool eat)
     {
         setAnimalType(type);
         setAnimalName(name);
@@ -148,7 +148,37 @@ int main() {
 
         if(action==3)
         {
-            //do something
+            int modify_animal_index;
+            string modify_Animal_type
+            , modify_Animal_name
+            , modify_Animal_color;
+            int modify_Animal_age;
+            char modify_Animal_eating
+            , modify_Animal_moving;
+            cout<<"Enter the index of the animal to be modified: ";
+            cin>>modify_animal_index;
+            cout<<"\n";
+            Animal animal_to_modify=Animal_menu[modify_animal_index-1];
+            cout<<"Enter the animal's  new type: ";
+            cin>>modify_Animal_type;
+            cout<<"\n";
+            cout<<"Enter the animal's new name: ";
+            cin>>modify_Animal_name;
+            cout<<"\n";
+            cout<<"Enter the animal's new color: ";
+            cin>>modify_Animal_color;
+            cout<<"\n";
+            cout<<"Enter the animal's new age: ";
+            cin>>modify_Animal_age;
+            cout<<"\n";
+            cout<<"Is the animal moving?(Y/N): ";
+            cin>>modify_Animal_moving;
+            cout<<"\n";
+            cout<<"Is the animal eating?(Y/N): ";
+            cin>>modify_Animal_eating;
+            cout<<"\n";
+            animal_to_modify.Modify_Animal(modify_Animal_type,modify_Animal_name,modify_Animal_color,modify_Animal_age,modify_Animal_moving,modify_Animal_eating);
+            cout<<"animal number "<<modify_animal_index<<" modified successfully\n";
             goto start;
         }
         if(action==4)
