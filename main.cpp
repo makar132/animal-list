@@ -7,9 +7,9 @@ using namespace std;
 int main() {
     vector<Animal> Animal_menu;
     int action;
-    cout<<"HELLO, THERE\n";
+    cout<<"HELLO THERE\n";
 
-    start:  cout << "Choose an action\n";
+    start:  cout << "Choose an action\n\n";
         cout
                 << "1:Display Menu   2:Add Animal    3:Modify Existing Animal    4:Remove an Animal from the Menu    5:Exit\n";
         cin>>action;
@@ -29,11 +29,15 @@ int main() {
         }
         if(action==2)
         {
+            /*
+             * update notes :
+             * check for input validity
+            */
             string new_Animal_type
             , new_Animal_name
             , new_Animal_color;
             int new_Animal_age;
-            char new_Animal_eating
+            string new_Animal_eating
             , new_Animal_moving;
             cout<<"Enter New animal's type:  ";
             cin>>new_Animal_type;
@@ -47,13 +51,13 @@ int main() {
             cout<<"Enter New animal's age:  ";
             cin>>new_Animal_age;
             cout<<"\n";
-            cout<<"Is New animal moving?(Y/N):  ";
+            cout<<"Is New animal moving?(Yes/No):  ";
             cin>>new_Animal_moving;
             cout<<"\n";
-            cout<<"Is New animal eating?(Y/N):  ";
+            cout<<"Is New animal eating?(Yes/No):  ";
             cin>>new_Animal_eating;
             cout<<"\n";
-            Animal new_Animal=Animal(new_Animal_type, new_Animal_name, new_Animal_color, new_Animal_age,new_Animal_moving == 'Y', new_Animal_eating == 'Y');
+            Animal new_Animal=Animal(new_Animal_type, new_Animal_name, new_Animal_color, new_Animal_age,new_Animal_moving, new_Animal_eating );
             Animal_menu.emplace_back(new_Animal);
             cout<<"New animal added to Menu\n\n";
             goto start;
@@ -61,13 +65,18 @@ int main() {
 
         if(action==3)
         {
+            /*
+            * update notes:
+            * check for input validity
+            * add option to skip modification for some attributes
+            */
             int modify_animal_index;
             string modify_Animal_type
             , modify_Animal_name
             , modify_Animal_color;
             int modify_Animal_age;
-            char modify_Animal_eating
-            , modify_Animal_moving;
+            string modify_Animal_moving
+            , modify_Animal_eating;
             cout<<"Enter the index of the animal to be modified: ";
             cin>>modify_animal_index;
             cout<<"\n";
@@ -90,7 +99,13 @@ int main() {
             cout<<"Is the animal eating?(Y/N): ";
             cin>>modify_Animal_eating;
             cout<<"\n";
-            animal_to_modify.Modify_Animal(modify_Animal_type, modify_Animal_name, modify_Animal_color, modify_Animal_age,modify_Animal_moving == 'Y', modify_Animal_eating == 'Y');
+            animal_to_modify.setAnimalType(modify_Animal_type);
+            animal_to_modify.setAnimalName(modify_Animal_name);
+            animal_to_modify.setAnimalColor(modify_Animal_color);
+            animal_to_modify.setAnimalAge(modify_Animal_age);
+            animal_to_modify.setMoving(modify_Animal_moving);
+            animal_to_modify.setEating(modify_Animal_eating);
+
             cout<<"animal number "<<modify_animal_index<<" modified successfully\n\n";
             goto start;
         }

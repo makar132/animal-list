@@ -5,7 +5,7 @@
 #include "animal.h"
 
 
-Animal::Animal(string type,string name,string color,int age,bool move,bool eat)
+Animal::Animal(string type,string name,string color,int age,string move,string eat)
 {
     Animal_type=type;
     Animal_name=name;
@@ -47,35 +47,25 @@ void Animal::setAnimalAge(int animalAge) {
     Animal_age = animalAge;
 }
 
-bool Animal::isMoving() const {
+string Animal::isMoving() const {
     return moving;
 }
 
-void Animal::setMoving(bool moving) {
+void Animal::setMoving(string moving) {
     Animal::moving = moving;
 }
 
-bool Animal::isEating() const {
+string Animal::isEating() const {
     return eating;
 }
 
-void Animal::setEating(bool eating) {
+void Animal::setEating(string eating) {
     Animal::eating = eating;
 }
 
-void Animal::Modify_Animal(string type,string name,string color,int age,bool move,bool eat)
-{
-    setAnimalType(type);
-    setAnimalName(name);
-    setAnimalColor(color);
-    setAnimalAge(age);
-    setMoving(move);
-    setEating(eat);
-}
-
  ostream &operator<<(ostream &os, const Animal &animal) {
-    os << "Animal_type: " << animal.Animal_type << " Animal_name: " << animal.Animal_name << " Animal_color: "
-       << animal.Animal_color << " Animal_age: " << animal.Animal_age << " moving: " << animal.moving << " eating: "
+    os << "Animal_type: " << animal.Animal_type << ", Animal_name: " << animal.Animal_name << ", Animal_color: "
+       << animal.Animal_color << ", Animal_age: " << animal.Animal_age << ", is animal moving: " << animal.moving << ", is animal eating: "
        << animal.eating;
     return os;
 }
